@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Elements
+    
+    public var models = [Models]()
     
     @objc func leftButtonItem(param: UIBarButtonItem) {
     }
@@ -28,12 +30,14 @@ class ThirdViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        setupLayouts()
+        configureSections()
         collectionView.reloadData()
-        view.backgroundColor = .white
         self.title = "Альбомы"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                                  target: self,
-                                                                 action: #selector(leftButtonItem(param:)))
+                                                                 action: #selector(leftButtonItem(param:)) )
     }
     
     init() {
@@ -60,22 +64,78 @@ class ThirdViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(collectionView)
+        collectionView.collectionViewLayout = createCompositionalLayout()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        // Register cells
+        collectionView.register(AlbumCell.self,
+                                forCellWithReuseIdentifier: AlbumCell.indentifier)
+    }
+    
+    //MARK: - Settings Sections
+    
+    private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+        
+        return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+            
+            switch sectionNumber {
+        
+            case 0: return self.firstLayoutSection()
+            default:
+                return self.firstLayoutSection()
+            }
+        }
+    }
+    
+    private func firstLayoutSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(1.0))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(140),
+            heightDimension: .absolute(380))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+                                                     subitem: item,
+                                                     count:2)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 5,
+                                                      leading: 5,
+                                                      bottom: 5,
+                                                      trailing: 5)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
     }
 }
 
-extension FirstViewController: UICollectionViewDataSource {
+extension ThirdViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return models.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return models[section].options.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        return cell
+        
+        let model = models[indexPath.section].options[indexPath.row]
+        
+        switch model.self {
+        
+        case.albumsCell(let model):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCell.indentifier, for: indexPath) as! AlbumCell
+            
+            cell.configure(with: model)
+            cell.contentView.backgroundColor = .clear
+            return cell
         }
+    }
 }

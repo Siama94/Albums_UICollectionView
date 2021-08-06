@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AlbumCell: UICollectionViewCell {
+class AlbumCell: UICollectionViewCell {
 
     static let indentifier = "AlbumCell"
     

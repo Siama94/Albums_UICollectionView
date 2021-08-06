@@ -14,6 +14,11 @@
 		5D94DC3C26BD88C600538DC7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC3B26BD88C600538DC7 /* SecondViewController.swift */; };
 		5D94DC3F26BD88D800538DC7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC3E26BD88D800538DC7 /* ThirdViewController.swift */; };
 		5D94DC4226BD88EA00538DC7 /* FourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC4126BD88EA00538DC7 /* FourViewController.swift */; };
+		5D94DC4C26BD8FE700538DC7 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC4B26BD8FE700538DC7 /* Models.swift */; };
+		5D94DC4F26BD902000538DC7 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC4E26BD902000538DC7 /* AlbumCell.swift */; };
+		5D94DC5226BD916800538DC7 /* ConfigureCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC5126BD916800538DC7 /* ConfigureCollection.swift */; };
+		5D94DC5626BD9E4400538DC7 /* TableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC5526BD9E4400538DC7 /* TableCollectionViewCell.swift */; };
+		5D94DC5926BDA35B00538DC7 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D94DC5826BDA35B00538DC7 /* Headers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		5D94DC3B26BD88C600538DC7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5D94DC3E26BD88D800538DC7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		5D94DC4126BD88EA00538DC7 /* FourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourViewController.swift; sourceTree = "<group>"; };
+		5D94DC4B26BD8FE700538DC7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		5D94DC4E26BD902000538DC7 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		5D94DC5126BD916800538DC7 /* ConfigureCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureCollection.swift; sourceTree = "<group>"; };
+		5D94DC5526BD9E4400538DC7 /* TableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCollectionViewCell.swift; sourceTree = "<group>"; };
+		5D94DC5826BDA35B00538DC7 /* Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,11 @@
 				5D94DC2926BD870900538DC7 /* Assets.xcassets */,
 				5D94DC2B26BD870900538DC7 /* LaunchScreen.storyboard */,
 				5D94DC2E26BD870900538DC7 /* Info.plist */,
+				5D94DC4B26BD8FE700538DC7 /* Models.swift */,
+				5D94DC4E26BD902000538DC7 /* AlbumCell.swift */,
+				5D94DC5126BD916800538DC7 /* ConfigureCollection.swift */,
+				5D94DC5526BD9E4400538DC7 /* TableCollectionViewCell.swift */,
+				5D94DC5826BDA35B00538DC7 /* Headers.swift */,
 			);
 			path = Albums_UICollectionView;
 			sourceTree = "<group>";
@@ -147,9 +162,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D94DC5926BDA35B00538DC7 /* Headers.swift in Sources */,
 				5D94DC3C26BD88C600538DC7 /* SecondViewController.swift in Sources */,
 				5D94DC3826BD88B500538DC7 /* FirstViewController.swift in Sources */,
+				5D94DC5226BD916800538DC7 /* ConfigureCollection.swift in Sources */,
 				5D94DC4226BD88EA00538DC7 /* FourViewController.swift in Sources */,
+				5D94DC4F26BD902000538DC7 /* AlbumCell.swift in Sources */,
+				5D94DC5626BD9E4400538DC7 /* TableCollectionViewCell.swift in Sources */,
+				5D94DC4C26BD8FE700538DC7 /* Models.swift in Sources */,
 				5D94DC3F26BD88D800538DC7 /* ThirdViewController.swift in Sources */,
 				5D94DC2126BD86FB00538DC7 /* AppDelegate.swift in Sources */,
 			);

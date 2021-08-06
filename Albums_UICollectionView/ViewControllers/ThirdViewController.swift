@@ -71,6 +71,8 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         // Register cells
         collectionView.register(AlbumCell.self,
                                 forCellWithReuseIdentifier: AlbumCell.indentifier)
+        collectionView.register(TableCollectionViewCell.self,
+                                forCellWithReuseIdentifier: TableCollectionViewCell.indentifier)
     }
     
     //MARK: - Settings Sections
@@ -83,28 +85,9 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         
             case 0: return self.firstLayoutSection()
             case 1: return self.secondLayoutSection()
-            default: return self.firstLayoutSection()
+            default: return self.thirdLayoutSection()
             }
         }
-    }
-    
-    private func secondLayoutSection() -> NSCollectionLayoutSection {
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(140),
-            heightDimension: .absolute(195))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:1)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        return section
     }
     
     private func firstLayoutSection() -> NSCollectionLayoutSection {
@@ -131,6 +114,42 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         
         return section
     }
+    
+    private func secondLayoutSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(140),
+            heightDimension: .absolute(195))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
+    
+    private func thirdLayoutSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(44))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        
+        return section
+    }
 }
 
 extension ThirdViewController: UICollectionViewDataSource {
@@ -152,6 +171,13 @@ extension ThirdViewController: UICollectionViewDataSource {
         case.albumsCell(let model):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCell.indentifier, for: indexPath) as! AlbumCell
             
+            cell.configure(with: model)
+            cell.contentView.backgroundColor = .clear
+            return cell
+            
+        case.standardCell(let model):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableCollectionViewCell.indentifier, for: indexPath) as! TableCollectionViewCell
+
             cell.configure(with: model)
             cell.contentView.backgroundColor = .clear
             return cell

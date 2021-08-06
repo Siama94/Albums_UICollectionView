@@ -5,6 +5,7 @@
 //  Created by Анастасия on 06.08.2021.
 //
 
+import UIKit
 extension ThirdViewController {
     
     func configureSections() {
@@ -59,6 +60,46 @@ extension ThirdViewController {
                             name: "Собака",
                             number: 4,
                             imageName: "Image7"))
+            ]))
+        
+        models.append(Models(options: [
+            
+            .standardCell(model: StandardOption(
+                            title: "Видео",
+                            icon: UIImage(systemName: "video"),
+                            label: 10)),
+            .standardCell(model: StandardOption(
+                            title: "Селфи",
+                            icon: UIImage(systemName: "person.crop.square"),
+                            label: 12)),
+            .standardCell(model: StandardOption(
+                            title: "Фото Live Photos",
+                            icon: UIImage(systemName: "livephoto"),
+                            label: 56)),
+            .standardCell(model: StandardOption(
+                            title: "Снимки экрана",
+                            icon: UIImage(systemName: "camera.viewfinder"),
+                            label: 23)),
+            .standardCell(model: StandardOption(
+                            title: "Анимированные",
+                            icon: UIImage(systemName: "rhombus"),
+                            label: 1))
+            ]))
+        
+        models.append(Models(options: [
+            
+            .standardCell(model: StandardOption(
+                            title: "Импортированные",
+                            icon: UIImage(systemName: "square.and.arrow.down"),
+                            label: 0)),
+            .standardCell(model: StandardOption(
+                            title: "Скрытые",
+                            icon: UIImage(systemName: "eye.slash"),
+                            label: 0)),
+            .standardCell(model: StandardOption(
+                            title: "Недавно удаленные",
+                            icon: UIImage(systemName: "trash"),
+                            label: 45))
             ]))
     }
 }

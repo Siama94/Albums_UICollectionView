@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Models {
     let options: [SettingsOptionType]
@@ -13,10 +14,17 @@ struct Models {
 
 enum SettingsOptionType {
     case albumsCell(model: AlbumsOption)
+    case standardCell(model: StandardOption)
 }
 
 struct AlbumsOption {
     let name: String
     let number: Int
     let imageName: String
+}
+
+struct StandardOption {
+    let title: String
+    let icon: UIImage?
+    var label: Int
 }

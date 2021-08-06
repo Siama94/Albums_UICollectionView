@@ -73,6 +73,10 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
                                 forCellWithReuseIdentifier: AlbumCell.indentifier)
         collectionView.register(TableCollectionViewCell.self,
                                 forCellWithReuseIdentifier: TableCollectionViewCell.indentifier)
+        // Register headers
+        collectionView.register(CollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: CollectionReusableView.indentifier)
     }
     
     //MARK: - Settings Sections
@@ -112,6 +116,15 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(20))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: CollectionReusableView.indentifier, alignment: .top)
+        
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = Int.max
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        
         return section
     }
     
@@ -131,6 +144,14 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(20))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: CollectionReusableView.indentifier, alignment: .top)
+        
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = Int.max
+        section.boundarySupplementaryItems = [sectionHeader]
+        
         return section
     }
     
@@ -148,7 +169,45 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
 
         let section = NSCollectionLayoutSection(group: group)
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(20))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: CollectionReusableView.indentifier, alignment: .top)
+        
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = Int.max
+        section.boundarySupplementaryItems = [sectionHeader]
+        
         return section
+    }
+    
+    // MARK: - Headers
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionReusableView.indentifier, for: indexPath) as! CollectionReusableView
+        let a = indexPath.section
+        
+        switch (a) {
+        case 0:
+            header.configureBothHeaders(leftheader: "Мои альбомы", rightHeader: "См.Все")
+            return header
+            
+        case 1:
+            header.configureLeftHeader("Общие альбомы")
+            return header
+            
+        case 2:
+            header.configureLeftHeader("Типы медиафайлов")
+            return header
+            
+        case 3:
+            header.configureLeftHeader("Другое")
+            return header
+            
+        default:
+            break
+        }
+        return UICollectionReusableView()
     }
 }
 

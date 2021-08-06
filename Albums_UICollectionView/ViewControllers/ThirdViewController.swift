@@ -82,10 +82,29 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
             switch sectionNumber {
         
             case 0: return self.firstLayoutSection()
-            default:
-                return self.firstLayoutSection()
+            case 1: return self.secondLayoutSection()
+            default: return self.firstLayoutSection()
             }
         }
+    }
+    
+    private func secondLayoutSection() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(140),
+            heightDimension: .absolute(195))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
     }
     
     private func firstLayoutSection() -> NSCollectionLayoutSection {

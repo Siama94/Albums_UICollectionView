@@ -40,5 +40,25 @@ extension ThirdViewController {
                             number: 4,
                             imageName: "Image7"))
             ]))
+        
+        models.append(Models(options: [
+            
+            .albumsCell(model: AlbumsOption(
+                            name: "Viber",
+                            number: 2,
+                            imageName: "Image3")),
+            .albumsCell(model: AlbumsOption(
+                            name: "Instagram",
+                            number: 2, imageName:
+                                "Image4")),
+            .albumsCell(model: AlbumsOption(
+                            name: "Поездка",
+                            number: 3,
+                            imageName: "Image5")),
+            .albumsCell(model: AlbumsOption(
+                            name: "Собака",
+                            number: 4,
+                            imageName: "Image7"))
+            ]))
     }
 }

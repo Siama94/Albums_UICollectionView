@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class AlbumsViewController: UIViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Elements
     
@@ -185,9 +185,9 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionReusableView.indentifier, for: indexPath) as! CollectionReusableView
-        let a = indexPath.section
+        let section = indexPath.section
         
-        switch (a) {
+        switch (section) {
         case 0:
             header.configureBothHeaders(leftheader: "Мои альбомы", rightHeader: "См.Все")
             return header
@@ -211,7 +211,7 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
     }
 }
 
-extension ThirdViewController: UICollectionViewDataSource {
+extension  AlbumsViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return models.count

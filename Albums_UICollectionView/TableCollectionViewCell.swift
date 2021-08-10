@@ -24,10 +24,6 @@ class TableCollectionViewCell: UICollectionViewCell {
     
     public let iconContainer: UIView = {
         let view = UIView()
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        
         return view
     }()
     
@@ -42,10 +38,6 @@ class TableCollectionViewCell: UICollectionViewCell {
     
     public var arrawContainer: UIView = {
         let view = UIView()
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        
         return view
     }()
     
@@ -77,7 +69,7 @@ class TableCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupHierarchy()
-        layoutSubviews()
+        setupLayouts()
     }
     
     required init?(coder: NSCoder) {
@@ -100,37 +92,42 @@ class TableCollectionViewCell: UICollectionViewCell {
         contentView.clipsToBounds = true
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private func setupLayouts() {
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50).isActive = true
-        
         iconContainer.translatesAutoresizingMaskIntoConstraints = false
-        iconContainer.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        iconContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        iconContainer.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        iconContainer.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor).isActive = true
-        iconImageView.widthAnchor.constraint(equalToConstant: 26).isActive = true
-        iconImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
-        
         arrawContainer.translatesAutoresizingMaskIntoConstraints = false
-        arrawContainer.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        arrawContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        arrawContainer.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        arrawContainer.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        
         arrawImageView.translatesAutoresizingMaskIntoConstraints = false
-        arrawImageView.centerYAnchor.constraint(equalTo: arrawContainer.centerYAnchor).isActive = true
-        arrawImageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
-        arrawImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
         labelLeft.translatesAutoresizingMaskIntoConstraints = false
-        labelLeft.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        labelLeft.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -35).isActive = true
+     
+        NSLayoutConstraint.activate([
+        
+        label.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        label.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor),
+        label.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+        
+        iconContainer.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        iconContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+        iconContainer.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor),
+        iconContainer.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor),
+        
+        iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor),
+        iconImageView.widthAnchor.constraint(equalTo:iconContainer.widthAnchor, constant: -15),
+        iconImageView.heightAnchor.constraint(equalTo:iconContainer.heightAnchor, constant: -15),
+        
+        arrawContainer.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        arrawContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
+        arrawContainer.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor),
+        arrawContainer.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor),
+        
+        arrawImageView.centerYAnchor.constraint(equalTo: arrawContainer.centerYAnchor),
+        arrawImageView.trailingAnchor.constraint(equalTo: arrawContainer.trailingAnchor, constant: -8),
+        arrawImageView.widthAnchor.constraint(equalTo: arrawContainer.widthAnchor, constant: -28),
+        arrawImageView.heightAnchor.constraint(equalTo: arrawContainer.widthAnchor, constant: -28),
+        
+        labelLeft.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        labelLeft.trailingAnchor.constraint(equalTo: arrawImageView.leadingAnchor, constant: -5),
+        ])
     }
 }

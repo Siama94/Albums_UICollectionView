@@ -23,8 +23,8 @@ class AlbumCell: UICollectionViewCell {
     
      let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 4
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 6
         return imageView
     }()
 
@@ -76,13 +76,13 @@ class AlbumCell: UICollectionViewCell {
             profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             profileImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             profileImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            profileImageView.heightAnchor.constraint(equalToConstant: 100),
+            profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor),
         
             name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            name.topAnchor.constraint(equalTo: profileImageView.bottomAnchor),
             
-            number.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor),
-            number.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+            number.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            number.topAnchor.constraint(equalTo: name.bottomAnchor)
         ])
     }
 }

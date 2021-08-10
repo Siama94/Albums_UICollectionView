@@ -46,12 +46,18 @@ class CollectionReusableView: UICollectionReusableView {
         
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        leftLabel.translatesAutoresizingMaskIntoConstraints = false
-        leftLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        
+
         rightLabel.translatesAutoresizingMaskIntoConstraints = false
-        rightLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        leftLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+
+        leftLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        leftLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+
+        rightLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        rightLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        ])
     }
 }
 

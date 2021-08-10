@@ -117,7 +117,7 @@ class ThirdViewController: UIViewController, UICollectionViewDelegateFlowLayout 
         section.orthogonalScrollingBehavior = .groupPaging
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                heightDimension: .absolute(20))
+                                                heightDimension: .absolute(25))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind: CollectionReusableView.indentifier, alignment: .top)
         
         sectionHeader.pinToVisibleBounds = true

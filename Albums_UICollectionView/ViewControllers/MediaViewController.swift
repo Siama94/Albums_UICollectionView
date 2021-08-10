@@ -1,5 +1,5 @@
 //
-//  FourViewController.swift
+//  FirstViewController.swift
 //  Albums_UICollectionView
 //
 //  Created by Анастасия on 06.08.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FourViewController: UIViewController {
+class MediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

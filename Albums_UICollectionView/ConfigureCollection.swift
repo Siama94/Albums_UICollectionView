@@ -6,7 +6,7 @@
 //
 
 import UIKit
-extension ThirdViewController {
+extension AlbumsViewController {
     
     func configureSections() {
         
